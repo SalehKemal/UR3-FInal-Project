@@ -6,7 +6,7 @@ import time
 import rospy
 import rospkg
 
-# messages for student to use
+
 from ur3_driver.msg import command
 from ur3_driver.msg import position
 from ur3_driver.msg import gripper_input
@@ -20,7 +20,7 @@ import numpy as np
 from find_block_pos import *
 from kinematic_functions import *
 
-########## Predefined functions below, no changes needed ##########
+
 
 # UR3 home: position for UR3 not blocking the camera
 home = [np.radians(255), np.radians(-45), np.radians(45), np.radians(-90), np.radians(-90), np.radians(90)]
@@ -163,26 +163,16 @@ class ImageConverter:
         except CvBridgeError as e:
             print(e)
 
-########## Predefined functions above, no changes needed ##########
+
 
 
 def MoveBlock(pub_cmd, loop_rate, start_xy, target_xy, vel, accel):
 
-    # ToDo: this function moves one block from the starting (x, y) coord
-    #       to destination (x, y) coord
-    # 
-    # Hint: - use 'inverse_kinematics()', 'move_arm()', 'gripper()' functions 
-    #       - UR3 should move upward first after gripping the block in order to have
-    #       a clear space to move around
-    #
-    # Note: - 'inverse_kinematics()' requires (x, y, z, yaw_angle), (x, y) is
-    #       given by inputs, yaw is set as 0 in this lab, so proper 'z' values should
-    #       be defined.
-    #       - height of base plate is 0.01 meters, and height of the block is 0.0318 meters
+   
 
     yaw_gripper = 0
 
-    ##### Your Code Starts Here #####
+  
     z_lower = 0.0218
     z_upper = 0.08
 
@@ -202,7 +192,7 @@ def MoveBlock(pub_cmd, loop_rate, start_xy, target_xy, vel, accel):
     move_arm(pub_cmd, loop_rate, dest_up, vel, accel)
     
 
-	##### Your Code Ends Here #####
+	
 
     print("Move one block.")
     
@@ -242,9 +232,9 @@ def main():
     time.sleep(2)
     current_img = ic.raw_image
 
-    ##### Your Code Starts Here #####
     
-    # ToDo: Use defined functions to move the red, yellow and green blocks to 
+    
+  
     #       destination positions 'dest_block_xy' using 'current_img'
 
     start_yellow = FindColorBlockWorldCoord(current_img, "YELLOW")
@@ -256,7 +246,7 @@ def main():
     MoveBlock(pub_command, loop_rate, start_green, dest_block_xy[2], vel, accel)
 
 	
-	##### Your Code Ends Here #####
+	
 
     print("\n")
     print("******************************")
