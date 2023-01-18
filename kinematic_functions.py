@@ -7,8 +7,7 @@ def Get_MS():
 	M = np.eye(4)
 	S = np.zeros((6,6))
 
-	##### Your Code Starts Here #####
-	# Fill in scripts from lab3 here
+	
 	Start = np.matrix([[1, 0, 0, -.15], [0, 1, 0, .15], [0, 0, 1, .162], [0, 0 ,0, 1]])
 	M = np.matmul(M, Start)
 	M = np.matmul(M, DHtoA(0, 0, -PI/2, 0))
@@ -19,7 +18,7 @@ def Get_MS():
 	M = np.matmul(M, DHtoA(0, .141, 0, .0535))
 
 	
-	##### Your Code Ends Here #####
+	
 
 	return M, S
 
@@ -77,7 +76,7 @@ def lab_fk(theta1, theta2, theta3, theta4, theta5, theta6):
 def inverse_kinematics(xWgrip, yWgrip, zWgrip, yaw_WgripDegree):
 	return_value = np.array([0, 0, 0, 0, 0, 0])
 
-	##### Your Code Starts Here #####
+	
 	L = [0, 0.152, 0.120, 0.244, 0.093, 0.213, 0.083, 0.083, 0.082, 0.0535, 0.052]
 
 	# Step 1: find gripper position relative to the base of UR3,
@@ -113,9 +112,7 @@ def inverse_kinematics(xWgrip, yWgrip, zWgrip, yaw_WgripDegree):
 	theta_2 = (np.arctan(h/r) + np.arccos((L[5]**2 - L[3]**2 - r**2 - h**2)/(-2*L[3]*np.sqrt(r**2 + h**2))))*-1
 	theta_4 = -theta_3 - theta_2
 
-	##### Your Code Ends Here #####
-
-	# print theta values (in degree) calculated from inverse kinematics
+	
 	
 	print("Joint angles: ")
 	print(str(theta_1*180/np.pi) + " " + str(theta_2*180/np.pi) + " " + \
