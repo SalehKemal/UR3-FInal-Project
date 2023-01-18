@@ -12,10 +12,7 @@ def FindBlockByColor(image, color):
     lower = (0,0,0)
     upper = (179,255,255)
 
-    ##### Your Code Starts Here #####
-    
-    # ToDo: find and define lower and upper bounds of the target color
-    # You can use either string or integer type for the 'color' input
+   
 
 #Checks the color and assigns the respective hmin, smin, and vmin values for it
     if (color == "WHITE"):
@@ -31,7 +28,7 @@ def FindBlockByColor(image, color):
         lower=(35,100,45)
         upper=(100,255,255)
 	
-	##### Your Code Ends Here #####
+	
     
     # Find mask image
     mask_image = cv2.inRange(hsv_image, lower, upper)
@@ -58,24 +55,13 @@ def FindBlockCenter(mask_image):
 
     block_centers = []
 
-    ##### Your Code Starts Here #####
     
-    # ToDo: find blob centers in the image coordinates 
-    #  
-    # Output: store the results in 'block_centers'
-    # 
-    # Hint: only 'keypoints' results are needed
-    # 
-    # 'block_centers' array has a size of (n x 2), where n is the number of blobs found
 
     for x in keypoints:
 	    block_centers.append([x.pt[0], x.pt[1]])
     num_blobs = len(keypoints)
 
-    #print(block_centers)
-    #print(num_blobs)
-	##### Your Code Ends Here #####
-
+   
 
     # Remove comment signs to show the image with 'block_centers' result added
     
@@ -106,8 +92,7 @@ def PixelToWorld(target_block_center_pixel, image):
     block_yw = 0.0
     block_xy = [block_xw, block_yw]
 
-    ##### Your Code Starts Here #####
-
+    
 #Define the ranges for the world as well as the x and y coordinates for the target block
     x_range_world = 0.5
     y_range_world = 1.4
@@ -152,12 +137,12 @@ def FindColorBlockWorldCoord(image, color):
 
     block_xy = [0.0, 0.0]
 
-    ##### Your Code Starts Here #####
+    
     image_mask = FindBlockByColor(image, color)
     block_centers = FindBlockCenter(image_mask)
     block_xy = PixelToWorld(block_centers[0], image)
 	
-	##### Your Code Ends Here #####
+
 
 
     return block_xy
